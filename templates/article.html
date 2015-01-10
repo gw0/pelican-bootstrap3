@@ -79,3 +79,15 @@
 {% include 'includes/comments.html' %}
 {% endif %}
 {% endblock %}
+
+{% block sidebar %}
+  {% if article.toc %}
+  <div class="col-sm-3 well well-sm" id="toc">
+    <aside>
+      <h4>{{ TITLE_TOC|default('Contents') }}</h4>
+      {{ article.toc }}
+    </aside>
+  </div>
+  {% endif %}
+{{- super() -}}
+{% endblock %}

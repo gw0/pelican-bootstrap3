@@ -8,6 +8,14 @@ body {
     -webkit-box-shadow: none;
 }
 
+#toc ul {
+    padding-left: 20px;
+}
+#toc ul ul {
+    color: #999;
+    font-size: 0.9em;
+}
+
 #sidebar .list-group, #sidebar .list-group-item {
     background-color: transparent;
 }
