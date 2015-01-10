@@ -3,12 +3,13 @@
 {% block content %}
 {% for article in (articles_page.object_list if articles_page else articles) %}
 <section>
-  <h2>
+  <p>
+    <span class="categories-timestamp"><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></span>
+    {% if article.subtitle %} <a href="{{ SITEURL }}/{{ article.url }}">{{ article.subtitle }}</a>{% endif %}
+  </p>
+  <h4>
     <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-  </h2>
-  {% if article.subtitle %}
-  <h3>{{ article.subtitle }}</h3>
-  {% endif %}
+  </h4>
   {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
   <div class="well well-sm">
 
@@ -19,7 +20,7 @@
   <div class="summary">
     {{ article.summary }}
     {% include 'includes/comment_count.html' %}
-    <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">more ...</a>
+    (<a href="{{ SITEURL }}/{{ article.url }}">more</a>)
   </div>
 </section>
 {% if not loop.last %}
