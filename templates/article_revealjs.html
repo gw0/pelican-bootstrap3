@@ -1,0 +1,85 @@
+{% extends "article.html" %}
+
+{% block style %}
+{{- super() -}}
+<link rel="stylesheet" href="{{ SITEURL }}/static/reveal.js/css/reveal.min.css" />
+<link rel="stylesheet" href="{{ SITEURL }}/static/reveal.js/css/theme/default.css" id="theme" />
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="{{ SITEURL }}/static/reveal.js/lib/css/zenburn.css">
+
+<!-- For embedding inside a div -->
+<style>
+  html,
+  body { height:auto; overflow:visible; }
+  body { position:static; padding-top:70px; font-size:14px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:20px; }
+  .reveal-wrapper { position:relative; height:550px;/*=720-170*/ margin:0 0 10px 0; }
+  .reveal { background-color:#333; }
+  .reveal .controls,
+  .reveal .progress,
+  .reveal .playback { position:absolute; }
+</style>
+
+<!-- Customize -->
+<style lang="text/css">
+  .reveal { font-family: "Times New Roman", serif; letter-spacing: 0; }
+  .reveal .slides { text-align: left; }
+  .reveal .center { text-align: center; }
+  .reveal ol,
+  .reveal ul { margin-bottom: 30px; }
+  .reveal small { vertical-align: baseline; }
+  .reveal sub,
+  .reveal sup { position:relative; font-size:75%; line-height:0; vertical-align:baseline; }
+  .reveal sup { top:-.5em; }
+  .reveal sub { bottom: -.25em; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="reveal-wrapper">
+<div class="reveal">
+<div class="slides">
+
+{{ article.content }}
+
+</div>
+</div>
+</div>
+
+<p>(Hint: Use <kbd>space</kbd> or arrow keys to navigate.)</p>
+{% endblock %}
+
+{% block script %}
+{{- super() -}}
+<script src="{{ SITEURL }}/static/reveal.js/lib/js/head.min.js"></script>
+<script src="{{ SITEURL }}/static/reveal.js/js/reveal.min.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: 'cube',
+    //transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    parallaxBackgroundImage: '{{ SITEURL }}/static/reveal.js/Binary-Green-2.jpg',
+    parallaxBackgroundSize: '4000px 1200px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: '{{ SITEURL }}/static/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: '{{ SITEURL }}/static/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '{{ SITEURL }}/static/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '{{ SITEURL }}/static/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: '{{ SITEURL }}/static/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: '{{ SITEURL }}/static/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+  });
+</script>
+{% endblock %}
