@@ -1,8 +1,8 @@
 {% macro translations_for(article) %}
-{% if article.translations %}
+{% if article.translations and (not TRANSLATION_USE_CATEGORY or article.category.slug in article.translations|map(attribute='category.slug')) %}
 <span class="label label-default">Lang</span>
-{% for translation in article.translations %}
-	<a href="{{ SITEURL }}/{{ translation.url }}">{{ translation.lang }}</a>
+{% for translation in article.translations  if not TRANSLATION_USE_CATEGORY or translation.category.slug == article.category.slug %}
+<a href="{{ SITEURL }}/{{ translation.url }}">{{ translation.lang }}</a>
 {% endfor %}
 {% endif %}
 {% endmacro %}

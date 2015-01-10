@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-xs-10">
       {% if FOOTER_PRE %}{{ FOOTER_PRE }}{% endif -%}
-      &copy; <em>{{ LICENSE_YEAR }}</em> {% if AUTHOR_URL %}<a href="{{ AUTHOR_URL }}" rel="author">{{ AUTHOR }}</a>{% else %}{{ AUTHOR }}{% endif %}
+      &copy; {{ LICENSE_YEAR }} <em>{% if AUTHOR_URL %}<a href="{{ AUTHOR_URL }}" rel="author">{{ AUTHOR }}</a>{% else %}{{ AUTHOR }}{% endif %}</em>
       {%- if FOOTER_POST %}{{ FOOTER_POST }}{% else %} &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>, <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>, <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>{% endif %}
 
       {% if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}

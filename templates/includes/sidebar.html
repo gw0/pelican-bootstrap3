@@ -1,7 +1,4 @@
-{% if DISPLAY_TAGS_ON_SIDEBAR is not defined %}
-    {% set DISPLAY_TAGS_ON_SIDEBAR = True %}
-{% endif %}
-
+{% if DISPLAY_TAGS_ON_SIDEBAR is not defined %}{% set DISPLAY_TAGS_ON_SIDEBAR = True %}{% endif -%}
 <aside>
     <section>
         <ul class="list-group list-group-flush">
@@ -76,5 +73,4 @@
 
         </ul>
     </section>
-
 </aside>
