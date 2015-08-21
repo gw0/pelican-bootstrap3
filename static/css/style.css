@@ -1,5 +1,15 @@
 body {
-    padding-top: 70px;
+    padding-top: 50px;
+}
+
+#site-banner {
+    padding: 40px 0;
+    background: transparent url('/static/img/banner-bg.jpg');
+    text-align: center;
+}
+
+article > .main {
+    margin-top: 20px;
 }
 
 #title .panel {

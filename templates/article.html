@@ -35,7 +35,7 @@
   {% endif %}
 {% endblock %}
 
-{% block body_class %}article{% endblock %}
+{% block body_class %}article {{ category }}{% endblock %}
 
 {% block breadcrumbs %}
 {% if DISPLAY_CATEGORY_IN_BREADCRUMBS %}
@@ -53,17 +53,16 @@
 {% endblock %}
 
 {% block title %}
-<h1>
-  <a href="{{ SITEURL }}/{{ article.url }}" title="Permalink to {{ article.title|striptags }}" rel="bookmark">{{ article.title }}</a>
-</h1>
-{% if article.subtitle %}
-<h2>{{ article.subtitle|striptags }}</h2>
-{% endif %}
 <div class="panel">
   <div class="panel-body">
+    <h1>
+      <a href="{{ SITEURL }}/{{ article.url }}" title="Permalink to {{ article.title|striptags }}" rel="bookmark">{{ article.title }}</a>
+    </h1>
+    {% if article.subtitle %}
+    <h3>{{ article.subtitle|striptags }}</h3>
+    {% endif %}
 
     {% include "includes/article_info.html" %}
-
   </div>
 </div>
 {% endblock %}
